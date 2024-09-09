@@ -9,14 +9,15 @@ CREATE TABLE Users (
 
 -- Expenses Table
 CREATE TABLE Expenses (
-          expense_id INT IDENTITY(1,1) PRIMARY KEY,  -- Auto-incremented primary key
-          user_id INT NOT NULL FOREIGN KEY REFERENCES Users(user_id),  -- Foreign key to Users table
+            id INT IDENTITY(1,1) PRIMARY KEY,  -- Auto-incremented primary key
+            user_id INT NOT NULL FOREIGN KEY REFERENCES Users(id),  -- Foreign key to Users table
             [month] NVARCHAR(10) NOT NULL,  -- Month of the expense
             [year] INT NOT NULL,  -- Year of the expense
             category NVARCHAR(100),  -- Category of the expense (e.g., Rent, Utilities, etc.)
             amount DECIMAL(10, 2),  -- Amount of the expense
             payment_method NVARCHAR(100),  -- Payment method (e.g., Credit Card, Cash)
-            created_at DATETIME DEFAULT GETDATE()  -- Default value is the current date/time
+            created_at DATETIME DEFAULT GETDATE(),
+            modified_at DATETIME DEFAULT GETDATE()-- Default value is the current date/time
     );
 
 -- Savings Table
